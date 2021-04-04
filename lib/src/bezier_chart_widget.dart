@@ -3,6 +3,7 @@ import 'dart:ui';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import '../helper/constants.dart';
 
 import 'bezier_line.dart';
 import 'bezier_chart_config.dart';
@@ -1536,7 +1537,7 @@ class _BezierChartPainter extends CustomPainter {
       final date = _currentXDataPoint.xAxis as DateTime;
       final now = DateTime.now();
       if (areEqualDatesIncludingHour(date, now)) {
-        return "Now\n";
+        return Constants().getNowString() + "\n";
       } else {
         return "${dateFormat.format(_currentXDataPoint.xAxis)}\n";
       }
@@ -1545,7 +1546,7 @@ class _BezierChartPainter extends CustomPainter {
       final date = _currentXDataPoint.xAxis as DateTime;
       final now = DateTime.now();
       if (areEqualDates(date, now)) {
-        return "Current\n";
+        return Constants().getCurrentString() + "\n";
       } else {
         return "${dateFormat.format(_currentXDataPoint.xAxis)}\n";
       }
@@ -1554,7 +1555,7 @@ class _BezierChartPainter extends CustomPainter {
       final date = _currentXDataPoint.xAxis as DateTime;
       final now = DateTime.now();
       if (date.year == now.year && now.month == date.month) {
-        return "Current Month\n";
+        return Constants().getCurrentMonthString() + "\n";
       } else {
         return "${dateFormat.format(_currentXDataPoint.xAxis)}\n";
       }
@@ -1563,7 +1564,7 @@ class _BezierChartPainter extends CustomPainter {
       final date = _currentXDataPoint.xAxis as DateTime;
       final now = DateTime.now();
       if (date.year == now.year) {
-        return "Current Year\n";
+        return Constants().getCurrentYear() + "\n";
       } else {
         return "${dateFormat.format(_currentXDataPoint.xAxis)}\n";
       }
